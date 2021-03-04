@@ -30,7 +30,7 @@ jobs:
     - name: Install Node Dependencies
       run: npm install
     - name: Compile code
-      run: npm run proudction
+      run: npm run production
 
     - name: Generate key
       run: php artisan key:generate
