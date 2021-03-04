@@ -38,9 +38,9 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
       run: |
-        service mysqld start
+        systemctl status mysqld.service && systemctl start mysqld.service
         mysqld --initialize-insecure --user=mysql
-        service mysqld restart
+        systemctl restart mysqld.service && systemctl status mysqld.service
         mysql -u root --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
     - name: Generate test data
       run: php artisan blog:install
