@@ -21,7 +21,7 @@ jobs:
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Composer Dependencies
-      run: composer update -q && composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run: composer update && composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
