@@ -37,10 +37,9 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
+      # see https://github.com/actions/virtual-environments/blob/ubuntu18/20210219.1/images/linux/Ubuntu1804-README.md
       run: |
-        systemctl status mysqld.service && systemctl start mysqld.service
-        mysqld --initialize-insecure --user=mysql
-        systemctl restart mysqld.service && systemctl status mysqld.service
+        sudo systemctl start mysqld.service
         mysql -u root --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
     - name: Generate test data
       run: php artisan blog:install
