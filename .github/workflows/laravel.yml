@@ -40,7 +40,6 @@ jobs:
       # see https://github.com/actions/virtual-environments/blob/ubuntu18/20210219.1/images/linux/Ubuntu1804-README.md
       run: |
         sudo systemctl start mysql.service
-        mysql -u root --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
     - name: Generate test data
       run: php artisan blog:install
     - name: Execute tests (Unit and Feature tests) via PHPUnit
